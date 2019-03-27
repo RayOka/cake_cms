@@ -1,4 +1,4 @@
-<!-- File: src/Template/Articles/index.ctp -->
+<!-- src/Template/Articles/index.ctp -->
 
 <h1>記事</h1>
 <table>

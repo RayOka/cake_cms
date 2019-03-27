@@ -45,6 +45,16 @@ use Cake\Routing\Route\DashedRoute;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
+// タグ付けされたアクションのために追加された新しいルート
+// 末尾の`*`は，パラメータとしてコントローラーに渡されることをCakePHPに伝える
+Router::scope(
+    '/articles',
+    ['controller' => 'Articles'],
+    function ($routes) {
+        $routes->connect('/tagged/*', ['action' => 'tags']);
+    }
+);
+
 Router::scope('/', function (RouteBuilder $routes) {
     // Register scoped middleware for in scopes.
     $routes->registerMiddleware('csrf', new CsrfProtectionMiddleware([
