@@ -112,6 +112,12 @@ class UsersController extends AppController
 
     public function login()
     {
+        $user = $this->Auth->user();
+        // 2重ログイン防止
+        if (isset($user)) {
+            $this->redirect($this->referer());
+        }
+
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
